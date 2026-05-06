@@ -17,7 +17,7 @@ Apri il terminale e lancia:
 docker run -p 8000:8000 pzzt/bizcard-api:latest
 ```
 
-Poi apri il browser su [http://localhost:8000/docs](http://localhost:8000/docs)
+Poi apri il browser su [http://localhost:8000/](http://localhost:8000/)
 
 ### Il trucco dietro il sipario
 
