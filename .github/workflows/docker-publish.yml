@@ -31,7 +31,8 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/bizcard-api
           tags: |
-            type=sha,prefix=latest
+            type=sha,prefix=
+            latest
 
       # 3. Costruisci l'immagine Docker e pushala su Docker Hub
       - name: Build and push Docker image
