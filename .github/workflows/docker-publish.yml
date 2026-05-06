@@ -1,0 +1,43 @@
+name: Build and Push Docker Image
+
+# La pipeline parte ogni volta che fai un push sul branch main
+on:
+  push:
+    branches: ["main"]
+
+# I permessi necessari
+permissions:
+  contents: read
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. Fai il login su Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 2. Estrai i metadati (tag, label) per l'immagine
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-api
+          tags: |
+            type=sha,prefix=latest
+
+      # 3. Costruisci l'immagine Docker e pushala su Docker Hub
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
