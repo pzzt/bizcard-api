@@ -22,7 +22,7 @@ Poi apri il browser su [http://localhost:8000/](http://localhost:8000/)
 ### Il trucco dietro il sipario
 
 Sotto questa facciata da semplice biglietto da visita si nasconde un piccolo robot.
-Ogni volta che cambio una virgola nel mio curriculum e faccio un `git push`, un'automazione prende il codice, lo chiude in un container Docker perfettamente pulito e lo consegna da sola sugli scaffali di Docker Hub. Zero sforzi manuali, zero errori umani.
+Ogni volta che cambio una virgola nel mio biglietto da visita e faccio un `git push`, un'automazione prende il codice, lo chiude in un container Docker perfettamente pulito e lo consegna da sola sugli scaffali di Docker Hub. Zero sforzi manuali, zero errori umani.
 
 ### Cosa trovi dentro?
 
