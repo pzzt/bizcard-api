@@ -29,7 +29,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-api
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/bizcard-api
           tags: |
             type=sha,prefix=latest
 
