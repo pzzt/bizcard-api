@@ -29,3 +29,16 @@ Ogni volta che cambio una virgola nel mio biglietto da visita e faccio un `git p
 * `GET /`
 * `GET /skills`
 * `GET /contatti`
+
+### Test da terminale
+
+~~~bash
+# Messaggio di benvenuto
+curl -s http://localhost:8000/ | python -m json.tool
+
+# Le competenze
+curl -s http://localhost:8000/skills | python -m json.tool
+
+# I contatti
+curl -s http://localhost:8000/contatti | python -m json.tool
+~~~
