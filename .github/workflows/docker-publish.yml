@@ -20,7 +20,7 @@ jobs:
       # -- Controllo cambiamenti -
       - name: Detect change files
         id: filter
-        users: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v3
         with:
           filters: |
             app_code:
