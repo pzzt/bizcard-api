@@ -17,21 +17,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      #-- Quality Gate -
+      # -- Controllo cambiamenti -
+      - name: Detect change files
+        id: filter
+        users: dorny/paths-filter@v3
+        with:
+          filters: |
+            app_code:
+              - 'app/**'
+              - 'Dockerfile'
+              - 'requirements.txt'
+      # ------------------------------
+      # -- Quality Gate -
       - name: Set up Python
+        if: steps.filter.outputs.app_code == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install Quality Gate tool (Ruff)
+        if: steps.filter.outputs.app_code == 'true'
         run: pip install ruff
 
       - name: Run Ruff Checkout
+        if: steps.filter.outputs.app_code == 'true'
         run: ruff check app/
       #-- fine quality gate --
 
       # 1. Fai il login su Docker Hub
       - name: Log in to Docker Hub
+        if: steps.filter.outputs.app_code == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -39,6 +54,7 @@ jobs:
 
       # 2. Estrai i metadati (tag, label) per l'immagine
       - name: Extract metadata (tags, labels) for Docker
+        if: steps.filter.outputs.app_code == 'true'
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -49,6 +65,7 @@ jobs:
 
       # 3. Costruisci l'immagine Docker e pushala su Docker Hub
       - name: Build and push Docker image
+        if: steps.filter.outputs.app_code == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .

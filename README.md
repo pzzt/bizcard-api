@@ -30,6 +30,8 @@ Ogni volta che cambio una virgola nel mio biglietto da visita e faccio un `git p
 * `GET /skills`
 * `GET /contatti`
 
+---
+
 ### Test da terminale
 
 ~~~bash
