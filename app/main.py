@@ -5,7 +5,7 @@ app = FastAPI(title="Andrea Pozzato", description="API Business Card", version="
 
 @app.get("/")
 def read_root():
-    return {"message": "Qualche mio contatto", "status": "ok"}
+    return {"message": "Ti do il benvenuto, mi chiamo Andrea Pozzato", "status": "ok"}
 
 
 @app.get("/skills")
