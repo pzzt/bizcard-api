@@ -17,6 +17,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      #-- Quality Gate -
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Quality Gate tool (Ruff)
+        run: pip install ruff
+
+      - name: Run Ruff Checkout
+        run: ruff check app/
+      #-- fine quality gate --
+
       # 1. Fai il login su Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
