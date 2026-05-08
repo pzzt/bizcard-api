@@ -14,6 +14,7 @@ def get_skills():
         "linguaggi": ["Python", "Bash"],
         "devops": ["Docker", "GitHub Actions", "Git"],
         "frameworks": ["FastAPI", "Flask"],
+        "Hypervisors": ["VMware", "Proxmox"],
     }
 
 
