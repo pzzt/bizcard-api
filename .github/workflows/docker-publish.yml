@@ -80,7 +80,6 @@ jobs:
 
       # Costruisci l'immagine Docker e pushala su Docker Hub
       - name: Build and push Docker image
-        if: steps.filter.outputs.app_code == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .
